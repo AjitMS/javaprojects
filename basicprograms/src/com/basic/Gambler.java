@@ -3,43 +3,65 @@ package com.basic;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * @author bridgelabz3
+ *
+ */
 public class Gambler {
 
+	/**
+	 * @param args
+	 *            Gambler simulator with 1 unit increment till goal reaches OR user
+	 *            goes broke
+	 */
 	public static void main(String args[]) {
-		int x, $stake, i = 0, $goal;
+		int random, $stake=1, i = 0, $goal=0;
 		double n = 0.0;
-		double pw, pl;
+		double percentWin, percentLoss;
 
 		System.out.println("**Gambler Program 7**");
 
-		Scanner t = new Scanner(System.in);
-		System.out.println("What is on Stake, mate?");
-		$stake = t.nextInt();
-		System.out.println("Cool ! so, What's the goal you wanna meet?");
-		$goal = t.nextInt();
-		Random rm = new Random();
-		while (!($stake == 0 | $stake == $goal)) {
-			x = rm.nextInt(50) + 1;
+		String choice = "y";
+		Scanner scanner = new Scanner(System.in);
+		while (choice.equalsIgnoreCase("y")) {
 
-			if (x < 25)
-				$stake--;// lossess
-			else {
-				$stake++;// wins
-				i++;
+			
+			while ($goal <= $stake) {
+				System.out.println("Make sure your Goals Higher than current Stake");
+				System.out.println("What is on Stake, mate?");
+				$stake = scanner.nextInt();
+				System.out.println("Cool ! so, What's the goal you wanna meet?");
+				$goal = scanner.nextInt();
+			}
+
+			Random rm = new Random();
+			while (!($stake == 0 | $stake == $goal)) {
+				random = rm.nextInt(50) + 1;
+
+				if (random <= 25)
+					$stake--;// lossess
+				else {
+					$stake++;// wins
+					i++;
+
+				}
+				n++;
 
 			}
-			n++;
+			if ($stake == 0)
+				System.out.println("Sorry for your loss");
+			else
+				System.out.println("You owe me a Saporro's Space Barley Beer !");
+			percentWin = i / n * 100.0;
+			percentLoss = 100 - percentWin;
+			System.out.println("No. of wins: " + i + " from total of: " + n);
+			System.out.println("percent of wins: " + percentWin);
+			System.out.println("percent of lossess: " + percentLoss);
+			System.out.println("Play Again Y or N ?");
 
+			choice = scanner.next();
+			System.out.println(choice);
 		}
-		if ($stake == 0)
-			System.out.println("Sorry for your loss");
-		else
-			System.out.println("You owe me a Saporro's Space Barley Beer !");
-		pw = i / n * 100.0;
-		pl = 100 - pw;
-		System.out.println("No. of wins: " + i + " from total of: " + n);
-		System.out.println("percent of wins: " + pw);
-		System.out.println("percent of lossess: " + pl);
-		t.close();
+		scanner.close();
 	}
 }

@@ -18,19 +18,19 @@ public class BubbleSortIntDemo {
 	public static void main(String[] args) {
 
 		int n, numbers[], i;
-		Scanner t = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter no. of Integers");
-		n = t.nextInt();
+		n = scanner.nextInt();
 		numbers = new int[n];
 		System.out.println("Enter " + n + " Integers");
 		for (i = 0; i < n; i++)
-			numbers[i] = t.nextInt();
+			numbers[i] = scanner.nextInt();
 		System.out.println("Given numbers are: ");
 		for (i = 0; i < n; i++)
 			System.out.println(numbers[i]);
 		SortingUtilities.bubbleSortInt(numbers, n);
 
-		t.close();
+		scanner.close();
 
 	}
 }

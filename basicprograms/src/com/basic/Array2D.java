@@ -17,17 +17,17 @@ public class Array2D {
 
 		System.out.println("**2-D Array Program 9**");
 
-		Scanner t = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		int rows, columns, i, j;
 		System.out.println("Enter no. of rows");
-		rows = t.nextInt();
+		rows = scanner.nextInt();
 		System.out.println("Enter no. of columns");
-		columns = t.nextInt();
+		columns = scanner.nextInt();
 		int array[][] = new int[rows][columns];
 		System.out.println("Enter values of array");
 		for (i = 0; i < rows; i++)
 			for (j = 0; j < columns; j++)
-				array[i][j] = t.nextInt();
+				array[i][j] = scanner.nextInt();
 
 		PrintWriter printwriter = new PrintWriter(System.out);
 
@@ -39,6 +39,6 @@ public class Array2D {
 
 		printwriter.flush();
 		printwriter.close();
-		t.close();
+		scanner.close();
 	}
 }

@@ -2,10 +2,18 @@ package com.basic.hashFunction;
 
 import java.util.*;
 import java.util.Map.Entry;
+/**
+ * @author Ajit Shikalgar
+ *
+ */
 public class HashMapDemo {
 	Map<Integer, List<Integer>> map;
 	HashFunctionManager manager = new HashFunctionManager();
 
+	/**
+	 * @param args
+	 * Driver function required to implement the map
+	 */
 	public static void main(String[] args) {
 
 		int option;
@@ -52,10 +60,20 @@ public class HashMapDemo {
 		}
 	}
 
+	/**
+	 * @param n
+	 * @throws Exception
+	 * making use of object oriented feature
+	 * insert function needed to insert keys/values into our map
+	 */
 	private void insert(int n) throws Exception {
 		manager.insert(n);
 	}
 
+	/**
+	 * @throws Exception
+	 * To get the output in proper format
+	 */
 	private void display() throws Exception {
 		map = manager.getmap();
 		// Formatting Output

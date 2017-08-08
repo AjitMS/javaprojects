@@ -1,6 +1,5 @@
 package com.basic;
 
-
 import java.util.*;
 import java.io.*;
 
@@ -9,13 +8,13 @@ import java.io.*;
  * 
  */
 public class OrderedList {
-	node head;
+	Node head;
 
-	public class node {
+	public class Node {
 		int data;
-		node next;
+		Node next;
 
-		node(int d) {
+		Node(int d) {
 			data = d;
 
 		}
@@ -25,9 +24,9 @@ public class OrderedList {
 	 * @param data
 	 *            A method called to add integers in a sorted fashion
 	 */
-	public void addsort(int data) {
-		node add = new node(data);
-		node temp;
+	public void addSort(int data) {
+		Node add = new Node(data);
+		Node temp;
 		if (head == null || head.data >= add.data) {
 			add.next = head;
 			head = add;
@@ -47,12 +46,12 @@ public class OrderedList {
 	/**
 	 * A Method required to reduce efforts of printing lists.
 	 */
-	public void show() {
+	public void showList() {
 		if (head == null) {
 			System.out.println("Empty List");
 			return;
 		} else {
-			node n = head;
+			Node n = head;
 			while (n.next != null) {
 				System.out.print(" " + n.data);
 				n = n.next;
@@ -71,7 +70,7 @@ public class OrderedList {
 	public boolean search(int data) {
 		if (head == null)
 			return false;
-		node sample = head;
+		Node sample = head;
 		while (sample.next != null & sample.data != data) {
 			sample = sample.next;
 		}
@@ -85,9 +84,9 @@ public class OrderedList {
 	 * 
 	 * @param del_data
 	 */
-	public void removesort(int del_data) {
+	public void removeSort(int del_data) {
 
-		node temp = head, prev = null;
+		Node temp = head, prev = null;
 
 		if (temp != null && temp.data == del_data) {
 			head = temp.next;
@@ -108,11 +107,10 @@ public class OrderedList {
 	/**
 	 * Function to facilitate Writing of list to file
 	 */
-	public void filewriter() {
-		node n = head;
+	public void fileWriter() {
+		Node n = head;
 		String s;
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(
-				"src/textfiles/OrderedListop.txt"))) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/textfiles/OrderedListop.txt"))) {
 
 			while (n.next != null) {
 
@@ -127,40 +125,38 @@ public class OrderedList {
 	}
 
 	public static void main(String[] args) throws Exception {
-		Scanner t = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		int token;
-		Scanner sc = new Scanner(
-				new FileReader("src/textfiles/orderedlist.txt"));
-		OrderedList il = new OrderedList();
+		Scanner fileScanner = new Scanner(new FileReader("src/textfiles/orderedlist.txt"));
+		OrderedList orderedList = new OrderedList();
 
 		int n;
 
-		while (sc.hasNext()) {
-			n = sc.nextInt();
-			il.addsort(n);
+		while (fileScanner.hasNext()) {
+			n = fileScanner.nextInt();
+			orderedList.addSort(n);
 		}
 		System.out.println("Original List in Text File is: ");
-		il.show();
+		orderedList.showList();
 		System.out.println("");
 		String choice = "y";
 		while (choice == "y") {
 			System.out.println("Enter an Integer you wish to remove/Add ");
-			token = t.nextInt();
-			if (il.search(token) == true) {
-				il.removesort(token);
+			token = scanner.nextInt();
+			if (orderedList.search(token) == true) {
+				orderedList.removeSort(token);
 				System.out.println("Removed Successfullly !!!");
-			} else if (il.search(token) == false) {
-				il.addsort(token);
+			} else if (orderedList.search(token) == false) {
+				orderedList.addSort(token);
 				System.out.println("Added Successfully !!!");
 			}
-			
-			
-			il.filewriter();
-			il.show();
-		
+
+			orderedList.fileWriter();
+			orderedList.showList();
+
 		}
-		t.close();
-		sc.close();
+		scanner.close();
+		fileScanner.close();
 	}
 
 }

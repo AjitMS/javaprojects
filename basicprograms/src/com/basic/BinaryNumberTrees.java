@@ -1,6 +1,5 @@
 package com.basic;
 
-
 import java.util.*;
 
 /**
@@ -9,8 +8,10 @@ import java.util.*;
  */
 public class BinaryNumberTrees {
 
-	// A recursive function to find nth catalan number
-
+	/**
+	 * @param n
+	 * @return Recursive Function to implement nth Catalan Number.
+	 */
 	int catalan(int n) {
 		int res = 0;
 
@@ -24,14 +25,19 @@ public class BinaryNumberTrees {
 		return res;
 	}
 
+	/**
+	 * @param args
+	 * driver program to generate no. of tress
+	 */
 	public static void main(String[] args) {
-		Scanner t= new Scanner(System.in);
-		BinaryNumberTrees cn = new BinaryNumberTrees();
+		Scanner scanner = new Scanner(System.in);
+		BinaryNumberTrees catalan = new BinaryNumberTrees();
 		System.out.println("Enter no. of Nodes");
-		int n = t.nextInt();
+		int n = scanner.nextInt();
 		for (int i = 0; i < n; i++) {
-			System.out.print(cn.catalan(i) + " ");
-			t.close();
+			System.out.print(catalan.catalan(i) + " ");
+
 		}
+		scanner.close();
 	}
 }

@@ -15,20 +15,24 @@ enum WhoseTurn {
 public class TicTacToe {
 
 	// Main 3 * 3 board
-	char[][] board;
+	private char[][] board;
 
 	// this will keep track of the available moves
 	// if the cell value is true then it is filled else empty
-	boolean moves[];
+	private boolean moves[];
 
-	static int rows = 3;
-	static int columns = 3;
-	static int tmove = 9;
+	private static int rows = 3;
+	private static int columns = 3;
+	private static int tmove = 9;
 
 	WhoseTurn whoseTurn = WhoseTurn.PLAYER;
 
 	Random random = new Random();
 
+	/**
+	 * @param args
+	 *            Driver method to implement TicTacToe
+	 */
 	public static void main(String args[]) {
 
 		TicTacToe ticTacToe = new TicTacToe(rows, columns, tmove);
@@ -74,7 +78,9 @@ public class TicTacToe {
 
 	}
 
-	// function to check who's the winner
+	/**
+	 * function to check who's the winner
+	 */
 	private void declareWinner() {
 
 		// we use reverse logic since if we have winning condition true then the
@@ -86,7 +92,11 @@ public class TicTacToe {
 
 	}
 
-	// function to check whether rows are crossed
+	/**
+	 * function to check whether rows are crossed
+	 * 
+	 * @return
+	 */
 	private boolean rowCrossed() {
 		for (int i = 0; i < rows; i++) {
 			if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != ' ')
@@ -96,7 +106,11 @@ public class TicTacToe {
 		return (false);
 	}
 
-	// similar logic for columns and diagonals
+	
+	/**
+	 * similar logic for columns
+	 * @return
+	 */
 	private boolean columnCrossed() {
 		for (int i = 0; i < columns; i++) {
 			if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != ' ')
@@ -106,6 +120,10 @@ public class TicTacToe {
 		return (false);
 	}
 
+	/**
+	 * check diagonal crossed
+	 * @return
+	 */
 	private boolean diagonalCrossed() {
 		if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != ' ')
 			return (true);
@@ -116,10 +134,17 @@ public class TicTacToe {
 		return (false);
 	}
 
+	/**
+	 * if rowCrossed or columnCrossed or diagonalCrossed
+	 * @return
+	 */
 	private boolean gameOver() {
 		return (rowCrossed() || columnCrossed() || diagonalCrossed());
 	}
 
+	/**
+	 * initialize game
+	 */
 	private void play() {
 
 		int movesPlayed = 0;

@@ -1,41 +1,69 @@
 package com.basic;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
+/**
+ * @author Ajit Shikalgar
+ *
+ */
 public class Palindrome {
 
+
 	/**
-	 * @author Ajit Shikalgar
-	 * @param String
-	 * Program com
+	 * @param args
+	 * To inspect whether a given string is palindrome 
+	 * by populating it into deque
+	 * using its feature of peekFirst() and peekLast()
 	 */
 	public static void main(String[] args) {
+		String key;
+		char array[];
 		Scanner t = new Scanner(System.in);
-		System.out.println("Enter no. of chars in String ");
-		int n = t.nextInt();
-		String temp;
-		String s[] = new String[n];
-		System.out.println("Enter each character of string ");
-		for (int i = 0; i < s.length; i++)
-			s[i] = t.next();
+		String choice = "y";
+		while (choice.equalsIgnoreCase("y")) {
 
-		Deque<String> dq = new ArrayDeque<String>();
-		for (int i = 0; i < s.length; i++) {
-			temp = s[i];
-			dq.addLast(temp);
+			Deque<Character> dq = new ArrayDeque<>();
+			System.out.println("Enter a String");
+			key = t.nextLine();
+			key = key.trim();
+			array = new char[key.length()];
+			array = key.toCharArray();
+			for (int i = 0; i < array.length; i++)
+				dq.addFirst(array[i]);
+
+			System.out.println("Given String is ");
+			System.out.print("[");
+			for (int i = 0; i < array.length; i++) {
+				System.out.print(array[i]);
+				System.out.print(", ");
+			}
+			System.out.println("]");
+			System.out.println("and its Reverse is " + dq);
+
+			while (!dq.isEmpty()) {
+				try {
+					if (dq.peekFirst() == dq.peekLast())  //Actual Comparision
+
+					{
+						dq.poll();
+						dq.removeLast();
+					} else {
+						System.out.println(key + " is not a Palindrome");
+						break;
+					}
+
+				} catch (NoSuchElementException E) {
+					System.out.println("Reached center element");
+				}
+			}
+
+			if (dq.isEmpty()) {
+				System.out.println("Given String is Palindrome");
+			}
 		}
-		System.out.println("Deque is "+dq);
-
-		for (int i = 0; i < s.length; i++)
-			if (dq.peekLast().equals(s[i]))
-				dq.pollLast();
-
-		System.out.println("Deque is "+dq);
-		
-		if (dq.isEmpty() == true)
-			System.out.println("Palindrome");
-		else
-			System.out.println("Not Palindrome");
 		t.close();
 	}
 }

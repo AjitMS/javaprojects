@@ -45,16 +45,16 @@ public class SortingUtilities {
 		int first = 0, last = a.length - 1, middle;
 		while (first <= last) {
 
-			middle = (last+first)/2;
-				
-			if (b.equals(a[middle]) ) {
+			middle = (last + first) / 2;
+
+			if (b.equals(a[middle])) {
 				System.out.println("Found the Keyword " + b + " at " + (middle + 1) + " location");
 				break;
 			} else if (b.compareTo(a[middle]) >= 0)
-				first = middle+1;
+				first = middle + 1;
 			else if (b.compareTo(a[middle]) <= 0)
-				last = middle-1;
-			
+				last = middle - 1;
+
 			else
 				System.out.println("Keyword not found");
 		}
@@ -130,7 +130,7 @@ public class SortingUtilities {
 				}
 		System.out.println("Sorted Array is: ");
 		for (i = 0; i < b; i++)
-			System.out.println(a[i]);
+			System.out.print(a[i] + " ");
 	}
 
 	/**
@@ -158,38 +158,62 @@ public class SortingUtilities {
 	}
 
 	/**
-	 * method 
+	 * method
 	 */
 	public static void generateCoupon() {
-		int n, i, count = 0, j;
+		int n, i;
 		int array[];
 		Scanner t = new Scanner(System.in);
 		System.out.println("Enter No. of Distinct values you need");
 		n = t.nextInt();
 		array = new int[n];
 		Random rm = new Random();
-		System.out.println("The initial generated values");
+		System.out.println("The Initial Generated Values: ");
 		for (i = 0; i < n; i++) {
 			array[i] = rm.nextInt(100);
 			System.out.print(array[i] + "\t");
 		}
 		int trials = n;
+		while (!(isUnique(array))) {
+			generateUnique(array, trials);
+		}
+		System.out.println("");
+		System.out.println("Final Generated Values: ");
 
-		for (i = 0; i < n; i++)
-			for (j = i + 1; j < n; j++)
-				if (array[i] == array[j]) { // check repetitions in values
-					array[j] = rm.nextInt(5);
-					count++;
-				}
-		trials = n + count;
-		System.out.println("");
-		System.out.println("The final distinct values");
-		for (i = 0; i < n; i++)
-			System.out.print(array[i] + "\t");
-		System.out.println("");
-		System.out.println("Total Trials Required: " + trials);
+		bubbleSortInt(array, array.length);
 		t.close();
+	}
 
+	public static int[] generateUnique(int array[], int trial) {
+		Random rm = new Random();
+		int temp;
+		temp = rm.nextInt(1000);
+		if (isUnique(array)) {
+			System.out.println(" ");
+			System.out.println("Total Trials: " + trial + " !");
+			return array;
+		} else {
+			trial++;
+			for (int i = 0; i < array.length; i++)
+				if (temp == array[i])
+					temp = rm.nextInt(100);
+			for (int i = 0; i < array.length; i++)
+				for (int j = i + 1; j < array.length; j++)
+					if (array[i] == array[j]) {
+						array[i] = temp;
+						break;
+
+					}
+			return array = generateUnique(array, trial);
+		}
+	}
+
+	public static boolean isUnique(int array[]) {
+		for (int i = 0; i < array.length; i++)
+			for (int j = i + 1; j < array.length; j++)
+				if (array[i] == array[j])
+					return false;
+		return true;
 	}
 
 }

@@ -15,24 +15,24 @@ public class Powerof2 {
 	 * 
 	 */
 	public static void main(String args[]) {
-		Scanner t = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		int exponential, value;
 
 		System.out.println("**Power of 2 Program**");
 				String choice = "y";
 		while (choice.equalsIgnoreCase("y")) {
 			System.out.println("Enter Number");
-			exponential = t.nextInt();
+			exponential = scanner.nextInt();
 			while (exponential >= 32) {
 				System.out.println("Enter Number must be less than 32");
-				exponential = t.nextInt();
+				exponential = scanner.nextInt();
 			}
 			value = BasicUtilities.powerOf2(exponential);
 			System.out.println(value);
 			System.out.println("Continue Y or N?");
-			choice = t.next();
+			choice = scanner.next();
 		}
-		t.close();
+		scanner.close();
 	}
 
 }

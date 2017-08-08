@@ -1,5 +1,9 @@
 package com.basic.inventory;
 
+/**
+ * @author Ajit Shikalgar
+ *
+ */
 public class Item {
 	private String name;
 	private int price, quantity;

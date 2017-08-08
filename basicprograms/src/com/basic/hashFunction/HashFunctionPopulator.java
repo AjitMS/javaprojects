@@ -1,10 +1,12 @@
 package com.basic.hashFunction;
 
-
-
 import java.util.*;
 import java.io.*;
 
+/**
+ * @author Ajit Shikalgar
+ *
+ */
 public class HashFunctionPopulator {
 	// the path where our feeder file is present
 	private String filePath = "src/textfiles/hashfeed.txt";
@@ -13,13 +15,18 @@ public class HashFunctionPopulator {
 	HashFunctionManager hashfunctionmanager = new HashFunctionManager();
 
 	// intermediate holder for our numbers
-	String[] noArray;
+	String[] tempArray;
 
-	// our main game
+	// our main logic
 	Map<Integer, List<Integer>> myHashMap = new TreeMap<Integer, List<Integer>>();
 
-	public static void main(String[] args) throws IOException,
-			ClassNotFoundException {
+	/**
+	 * @param args
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * method to populate the map with the contents in the file.(keys)
+	 */
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		HashFunctionPopulator hashpop = new HashFunctionPopulator();
 
@@ -33,32 +40,41 @@ public class HashFunctionPopulator {
 		try {
 			hashpop.populate();
 		} catch (Exception E) {
-			System.out.println("Exception while populating your data");
+			System.out.println("Exception while populating data");
+			E.printStackTrace();
 		}
 		// save our file as a Serialized Object
 
 	}
 
+	/**
+	 * @throws IOException
+	 * populate our array from the file
+	 */
 	private void read() throws IOException {
 
-		// populate our array from the file
-		try (BufferedReader br = new BufferedReader(new BufferedReader(
-				new FileReader(file)))) {
-			String str = br.readLine();
-			noArray = str.split(" ");
+		
+		try (BufferedReader br = new BufferedReader(new BufferedReader(new FileReader(file)))) {
+			String line = br.readLine();
+			tempArray = line.split(" ");
 		}
 
 	}
 
-	private void populate() throws FileNotFoundException,
-			ClassNotFoundException, IOException {
+	/**
+	 * @throws FileNotFoundException
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 * traverse our tempArray and keep populating our Map
+	 */
+	private void populate() throws FileNotFoundException, ClassNotFoundException, IOException {
 
-		// traverse our noArray and keep populating our Map
-		for (String string : noArray) {
+		 
+		for (String string : tempArray) {
 
-			int n = Integer.parseInt(string);
+			int key = Integer.parseInt(string);
 
-			hashfunctionmanager.insert(n);
+			hashfunctionmanager.insert(key);
 
 		}
 

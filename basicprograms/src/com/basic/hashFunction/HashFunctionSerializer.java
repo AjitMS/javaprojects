@@ -3,6 +3,10 @@ package com.basic.hashFunction;
 import java.util.*;
 import java.io.*;
 
+/**
+ * @author Ajit Shikalgar
+ *
+ */
 public class HashFunctionSerializer {
 
 	public String filePath = "src/textfiles/hashop.dat";
@@ -13,18 +17,25 @@ public class HashFunctionSerializer {
 	 * to serialize entire map into object
 	 */
 	public void serialize(Map<Integer, List<Integer>> map) throws FileNotFoundException, IOException {
-		HashFun myhash = new HashFun(map);
+		HashFunction myhash = new HashFunction(map);
 		try (ObjectOutputStream out = new ObjectOutputStream(
 				new FileOutputStream("src/textfiles/hashop.dat"))) {
 			out.writeObject(myhash);
 		}
 	}
 
+	/**
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * method needed to return deserialized map
+	 */
 	public Map<Integer, List<Integer>> deserialize() throws FileNotFoundException, IOException, ClassNotFoundException{
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(
 				"src/textfiles/hashop.dat"))) {
 			
-			HashFun hashfunction = (HashFun)in.readObject();
+			HashFunction hashfunction = (HashFunction)in.readObject();
 			Map<Integer, List<Integer>> map = hashfunction.getHashfunction();
 			return map;
 			}

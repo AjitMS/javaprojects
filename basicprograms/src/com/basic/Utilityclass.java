@@ -1,22 +1,21 @@
 package com.basic;
 
-
-
-
+/**
+ * @author Ajit Shikalgar
+ *
+ */
 public class Utilityclass {
 	static long start, stop, elapsed;
 
 	/**
-	 * @author Ajit
 	 * @param array
 	 * @param key
-	 * driver function for the static methods
+	 *            driver function for the static methods
 	 */
 	public static void main(String[] args) {
 		int array[] = { 91, 49, 73, 98, 02, 13, 10, 69, 22, 97 };
 		int key = 91;
-		String string[] = { "ajit", "sajid", "manoj", "mayur", "shahrukh",
-				"akshay", "ras" };
+		String string[] = { "ajit", "sajid", "manoj", "mayur", "shahrukh", "akshay", "ras" };
 		String keyword = "mayur";
 		int lengthint = array.length;
 		int lengthstr = string.length;
@@ -24,7 +23,7 @@ public class Utilityclass {
 		a[1] = binarySearchInt(array, key);
 		a[2] = binarySearchString(string, keyword);
 		a[3] = insertionSortInt(array, lengthint);
-		a[4] = insertionSortString(string, lengthstr);//String and No. of Words
+		a[4] = insertionSortString(string, lengthstr);// String and No. of Words
 		a[5] = bubbleSortInt(array, lengthint);
 		a[6] = bubbleSortString(string, lengthstr);
 		for (int i = 1; i < a.length; i++)
@@ -32,9 +31,10 @@ public class Utilityclass {
 	}
 
 	/**
-	 * @param array a
-	 * @param array length
-	 * search and print desired int
+	 * @param array
+	 *            a
+	 * @param array
+	 *            length search and print desired int
 	 * @return overhead plus processing time
 	 */
 	public static long binarySearchInt(int a[], int b) {
@@ -48,8 +48,7 @@ public class Utilityclass {
 		while (first <= last) {
 			middle = (first + last) / 2;
 			if (b == a[middle]) {
-				System.out.println("Searched numer " + b + " is found at "
-						+ (middle + 1));
+				System.out.println("Searched numer " + b + " is found at " + (middle + 1));
 				break;
 			} else if (b > a[middle])
 				last = middle - 1;
@@ -63,9 +62,10 @@ public class Utilityclass {
 	}
 
 	/**
-	 * @param String a[]
-	 * @param String length
-	 * Binary search for string
+	 * @param String
+	 *            a[]
+	 * @param String
+	 *            length Binary search for string
 	 * @return method execution time
 	 */
 	public static long binarySearchString(String a[], String b) {
@@ -75,8 +75,7 @@ public class Utilityclass {
 		while (first <= last) {
 			middle = (first + last) / 2;
 			if (b.equals(a[middle])) {
-				System.out.println("Found the Keyword " + b + " at "
-						+ (middle + 1) + " location");
+				System.out.println("Found the Keyword " + b + " at " + (middle + 1) + " location");
 				break;
 			} else if (b.compareTo(a[middle]) > 0)
 				last = middle;
@@ -92,8 +91,10 @@ public class Utilityclass {
 	}
 
 	/**
-	 * @param array a
-	 * @param array length
+	 * @param array
+	 *            a
+	 * @param array
+	 *            length
 	 * @return method execution time
 	 */
 	public static long insertionSortInt(int a[], int b) {
@@ -119,9 +120,10 @@ public class Utilityclass {
 	}
 
 	/**
-	 * @param String array
-	 * @param string length
-	 * insertion sort for Strings
+	 * @param String
+	 *            array
+	 * @param string
+	 *            length insertion sort for Strings
 	 * @return method execution time
 	 */
 	public static long insertionSortString(String a[], int b) {
@@ -148,9 +150,10 @@ public class Utilityclass {
 	}
 
 	/**
-	 * @param integer array
-	 * @param array length
-	 * Bubble sort for Integer
+	 * @param integer
+	 *            array
+	 * @param array
+	 *            length Bubble sort for Integer
 	 * @return method execution time
 	 */
 	public static long bubbleSortInt(int a[], int b) {
@@ -174,9 +177,10 @@ public class Utilityclass {
 	}
 
 	/**
-	 * @param string array
-	 * @param string length
-	 * bubble sort for string
+	 * @param string
+	 *            array
+	 * @param string
+	 *            length bubble sort for string
 	 * @return method execution time
 	 */
 	public static long bubbleSortString(String a[], int b) {

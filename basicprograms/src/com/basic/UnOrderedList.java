@@ -8,7 +8,7 @@ import java.io.*;
  *
  */
 public class UnOrderedList {
-	Node head;
+	private Node head;
 
 	static class Node {
 		int data;
@@ -147,36 +147,43 @@ public class UnOrderedList {
 
 	}
 
+	/**
+	 * @param args
+	 * @throws Exception
+	 * driver method to implement UnOrdered list, such that, remove existing entry and add new entry
+	 * and reflect changes to file also
+	 * 
+	 */
 	public static void main(String args[]) throws Exception {
 
-		Scanner t = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		int token;
-		Scanner sc = new Scanner(new FileReader("src/textfiles/linkedlist.txt"));
-		UnOrderedList il = new UnOrderedList();
+		Scanner fileScanner = new Scanner(new FileReader("src/textfiles/linkedlist.txt"));
+		UnOrderedList unOrderedList = new UnOrderedList();
 		int n;
 
-		while (sc.hasNext()) {
-			n = sc.nextInt();
-			il.append(n);
+		while (fileScanner.hasNext()) {
+			n = fileScanner.nextInt();
+			unOrderedList.append(n);
 		}
 		System.out.println("Original");
-		il.show();
+		unOrderedList.show();
 		String choice = "y";
 		while (choice.equalsIgnoreCase("y")) {
 			System.out.println("Enter any Integer");
-			token = t.nextInt();
-			if (il.search(token) == true)
-				il.remove(token);
-			else if (il.search(token) == false)
-				il.append(token);
-			il.fileWriter();
+			token = scanner.nextInt();
+			if (unOrderedList.search(token) == true)
+				unOrderedList.remove(token);
+			else if (unOrderedList.search(token) == false)
+				unOrderedList.append(token);
+			unOrderedList.fileWriter();
 
-			sc.close();
-			il.show();
+			fileScanner.close();
+			unOrderedList.show();
 			System.out.println("Continue Y or N?");
-			choice = t.next();
+			choice = scanner.next();
 		}
-		t.close();
+		scanner.close();
 	}
 }

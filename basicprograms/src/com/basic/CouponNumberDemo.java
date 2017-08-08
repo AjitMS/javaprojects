@@ -1,5 +1,6 @@
 package com.basic;
 
+
 import com.basic.utilities.SortingUtilities;
 
 /**
@@ -15,6 +16,10 @@ public class CouponNumberDemo {
 	 * if not unique, replace it with another number
 	 */
 	public static void main(String args[]) {
-	SortingUtilities.generateCoupon();	
+	try{SortingUtilities.generateCoupon();}
+	catch(StackOverflowError E) {
+		System.out.println(" ");
+		System.out.println("Enter a Smaller Number. Stack Overflow !");
+	}
 	}
 }

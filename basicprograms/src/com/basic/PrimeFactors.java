@@ -15,20 +15,20 @@ public class PrimeFactors {
 	 */
 	public static void main(String args[]) {
 		int number, i;
-		Scanner t = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 				
 		System.out.println("**Prime Factors Program 6**");
 
 		while (true) {
 			System.out.println("Enter number");
-			number = t.nextInt();
+			number = scanner.nextInt();
 
 			for (i = 1; i <= number; i++)
 				if (number % i == 0)
 					if (BasicUtilities.isPrime(i))
 
 						System.out.println(i);
-		t.close();
+		scanner.close();
 		}
 	}
 

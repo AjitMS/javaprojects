@@ -15,16 +15,16 @@ public class BinarySearchFile {
 	 * @param tail
 	 * @param middle
 	 * @throws FileNotFoundException
-	 * Function to read a file and search for a specific word by user.
+	 *             Function to read a file and search for a specific word by user.
 	 */
 	public static void main(String[] args) throws Exception {
 		int i;
-		Scanner t = new Scanner(System.in);
-		Scanner scanner = new Scanner(new FileReader("src/textfiles/text.txt"));
+		Scanner scanner = new Scanner(System.in);
+		Scanner fileScanner = new Scanner(new FileReader("src/textfiles/text.txt"));
 
 		List<String> st = new ArrayList<String>();
-		while (scanner.hasNext())
-			st.add(scanner.next());
+		while (fileScanner.hasNext())
+			st.add(fileScanner.next());
 		String[] s = new String[(st.size())];
 		Collections.sort(st);
 		Iterator<String> l = st.listIterator();
@@ -37,16 +37,12 @@ public class BinarySearchFile {
 		for (i = 0; i < s.length; i++)
 			System.out.println(s[i]);
 
-		
-	
-			System.out.println("Enter a String to search");
-			String name = t.next();
+		System.out.println("Enter a String to search");
+		String name = scanner.next();
 
-			SortingUtilities.binarySearchString(s, name);
-	t.close();
-	scanner.close();
-	
+		SortingUtilities.binarySearchString(s, name);
+		scanner.close();
+		fileScanner.close();
+
 	}
 }
-
-

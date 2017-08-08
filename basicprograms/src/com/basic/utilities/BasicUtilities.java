@@ -4,13 +4,13 @@ public class BasicUtilities {
 
 	public static boolean anagram(String a, String b) {
 		int i, j;
-		a = a.replaceAll("//s", "");
-		b = b.replaceAll("//s", "");
 		for (i = 0; i < a.length(); i++)
 			for (j = 0; j < b.length(); j++) {
 				if (a.length() == 0 || b.length() == 0)
 					return false;
-				if (a.charAt(i) != b.charAt(j) && a.length() != b.length())
+				if(a.length() != b.length())
+					return false;
+				if (a.charAt(i) != b.charAt(j))
 					return false;
 			}
 		return true;

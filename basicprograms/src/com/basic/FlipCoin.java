@@ -6,25 +6,26 @@ import java.util.Random;
 class FlipCoin {
 	/**
 	 * @param args
-	 * Using a random number generator, predict result of flipping of coin
+	 *            Using a random number generator, predict result of flipping of
+	 *            coin
 	 */
 	public static void main(String args[]) {
 
 		System.out.println("**This is Coin Flip Program 02**");
 
-		int flips, i, heads = 0, tails=0;
+		int flips, i, heads = 0, tails = 0;
 		float f, percentheads, percenttails;
-		Scanner t = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter no. of flips");
-		flips = t.nextInt();
+		flips = scanner.nextInt();
 		while (flips < 0) {
 			System.out.println("Positive Interger only");
-			flips = t.nextInt();
+			flips = scanner.nextInt();
 		}
 		i = 1;
-		Random rm = new Random();
+		Random random = new Random();
 		while (i <= flips) {
-			f = (float) rm.nextFloat();
+			f = (float) random.nextFloat();
 			System.out.println("Random" + f);
 			if (f < 0.5)
 				tails++;
@@ -36,6 +37,6 @@ class FlipCoin {
 		percenttails = (float) (tails * 100) / flips;
 		System.out.println("Heads Percentage" + percentheads);
 		System.out.println("Tails Percentage" + percenttails);
-		t.close();
+		scanner.close();
 	}
 }

@@ -16,6 +16,9 @@ public class InventoryManagerApp {
 	String path = "src/textfiles/inventory.json";
 	List<Item> inventorylist;
 //Main Logic
+	/**
+	 * Constructor setter required to populate list from external JSON file 
+	 */
 	public InventoryManagerApp() {
 		try (FileReader fr = new FileReader(new File(path))) {
 			JSONParser parser = new JSONParser();
@@ -40,6 +43,9 @@ public class InventoryManagerApp {
 	
 	
 
+	/**
+	 * Print the Inventory items
+	 */
 	public void show() {
 		System.out.printf("%-10s \t %-5s \t -%5s \n", "name", "weight",
 				"price");

@@ -2,6 +2,10 @@ package com.basic;
 
 import java.util.Scanner;
 
+/**
+ * @author Ajit Shikalgar
+ *
+ */
 public class HarmonicSeries {
 
 	/**
@@ -11,19 +15,19 @@ public class HarmonicSeries {
 	public static void main(String args[]) {
 		double initial;
 		double harmonicnumber;
-		Scanner t = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("**Harmonic Series Program 5**");
 
 		System.out.println("Enter value");
-		initial = t.nextDouble();
+		initial = scanner.nextDouble();
 		while (initial == 0) {
 			System.out.println("Enter value greater than 0");
-			initial = t.nextInt();
+			initial = scanner.nextInt();
 		}
 		harmonicnumber = harmonic(initial);
 		System.out.println("Harmonic value is " + harmonicnumber);
-		t.close();
+		scanner.close();
 	}
 
 	public static double reciprocal(double x) {

@@ -8,7 +8,7 @@ public class Parenthesis {
 
 	/**
 	 * @param n
-	 * Constructor working as a setter of initial values.
+	 *            Constructor working as a setter of initial values.
 	 */
 	public Parenthesis(int n) {
 		tos = -1;
@@ -17,9 +17,13 @@ public class Parenthesis {
 		array = new char[n];
 	}
 
+	public char tos() {
+		return array[tos];
+	}
+
 	/**
 	 * @param data
-	 * A Method needed to push data into stack
+	 *            A Method needed to push data into stack
 	 */
 	public void push(char data) {
 		if (tos < size - 1) {
@@ -34,10 +38,9 @@ public class Parenthesis {
 
 	/**
 	 * @param c
-	 * @return boolean
-	 * To check whether a character is present in stack or not
+	 * @return boolean To check whether a character is present in stack or not
 	 */
-	public boolean haschar(char c) {
+	public boolean hasChar(char c) {
 		int temp = tos;
 		for (int i = 0; i < array.length; i++)
 			if (c == array[temp])
@@ -47,9 +50,10 @@ public class Parenthesis {
 
 	/**
 	 * Function returning whether Stack is empty or not.
+	 * 
 	 * @return
 	 */
-	public boolean isempty() {
+	public boolean isEmpty() {
 		if (tos == -1)
 			return true;
 		return false;
@@ -63,42 +67,62 @@ public class Parenthesis {
 			System.out.println("Already Empty");
 			return;
 		} else {
+			System.out.println("Popped out " + array[tos]);
 			length--;
 			tos--;
-			System.out.println("Array[tos] after pop" + array[tos]);
 			return;
 
 		}
 	}
 
-	public void show() {
 
+
+	/**
+	 * Display Stack
+	 */
+	public void show() {
+		for(int i =0; i<tos; i++)
 		System.out.println(array[tos]);
 	}
 
+	/**
+	 * @param args
+	 * @throws Exception
+	 * Driver pogram to implement stack into inspecting parenthesis
+	 * 
+	 */
 	public static void main(String[] args) throws Exception {
 
+		int countPush = 0, countPop=0;
 		Scanner t = new Scanner(System.in);
-		char c;
-		System.out.println("Enter an Arithmetic Expression ");
-		String sample = t.nextLine();
-		Parenthesis pr = new Parenthesis(100);
-		for (int i = 0; i < sample.length(); i++) {
-			c = sample.charAt(i);
-			if (c == '{' || c == '(' || c == '[')
-				pr.push(c);
+		char character;
+		String choice = "y";
+		while (choice.equalsIgnoreCase("y")) {
+			System.out.println("Enter an Arithmetic Expression ");
+			String sample = t.next();
+			Parenthesis pr = new Parenthesis(100);
+			for (int i = 0; i < sample.length(); i++) {
+				character = sample.charAt(i);
+				if (character == '{' || character == '(' || character == '[') {
+					pr.push(character);
+					countPush++;
+				}
 
-			if (c == '}' || c == ')' || c == ']')
-				pr.pop();
+				if (character == '}' || character == ')' || character == ']') {
+					pr.pop();
+					countPop++;
+				}
+			}
 
+			if (pr.isEmpty() && (countPop == countPush))
+				System.out.println("Balanced Parentheis ");
+			else
+				System.out.println("Unbalanced Paranthesis ");
+			System.out.println("Continue Y or N ?");
+			choice = t.next();
 		}
-
-		if (pr.isempty())
-			System.out.println("Balanced Parentheis ");
-		else
-			System.out.println("Unbalanced Paranthesis ");
+		
 		t.close();
-
 	}
 
 }

@@ -13,13 +13,13 @@ public class Insertionsortstring {
 	public static void main(String[] args) {
 
 		int i;
-		Scanner t = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter no. of words");
-		int n = t.nextInt();
+		int n = scanner.nextInt();
 		String s[] = new String[n];
 		System.out.println("Enter the " + n + " words: ");
 		for (i = 0; i < n; i++)
-			s[i] = t.next();
+			s[i] = scanner.next();
 		System.out.print("Unsorted list is ");
 		for (i = 0; i < n; i++) {
 			System.out.println(s[i]);
@@ -28,7 +28,7 @@ public class Insertionsortstring {
 		
 		
 		SortingUtilities.insertionSortString(s,n);
-		t.close();
+		scanner.close();
 	}
 
 }

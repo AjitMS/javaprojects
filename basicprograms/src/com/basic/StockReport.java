@@ -2,7 +2,15 @@ package com.basic;
 
 import java.util.*;
 
+/**
+ * @author Ajit Shikalgar
+ *
+ */
 public class StockReport {
+	/**
+	 * @param args
+	 * Driver program to implement Stock maintnance
+	 */
 	public static void main(String[] args) {
 		int n;
 
@@ -13,24 +21,24 @@ public class StockReport {
 		for (int i = 0; i < n; i++) {
 
 			System.out.println("Enter Stock name");
-			String s = t.next();
+			String name = t.next();
 
 			System.out.println("Enter Stock quantity");
-			int number = t.nextInt();
+			int quantity = t.nextInt();
 
 			System.out.println("Enter price of each");
-			int pr = t.nextInt();
-			Stock new_Stock = new Stock(s, number, pr);
+			int price = t.nextInt();
+			Stock new_Stock = new Stock(name, quantity, price);
 			Stock[i] = new_Stock;
 		}
 
 		for (int i = 0; i < n; i++) {
 			Stock tempStock;
-			Portfolio pf = new Portfolio();
+			Portfolio portfolio = new Portfolio();
 			tempStock = Stock[i];
-			int value = pf.catchStock(tempStock);
+			int value = portfolio.catchStock(tempStock);
 
-			System.out.println("Total price of " + tempStock.getname() + " is " + value);
+			System.out.println("Total price of " + tempStock.getName() + " is " + value);
 			t.close();
 		}
 
@@ -39,7 +47,7 @@ public class StockReport {
 
 class Stock {
 	private int quantity, price;
-	private String Stockname;
+	private String stockName;
 
 	/**
 	 * @param name
@@ -49,22 +57,22 @@ class Stock {
 	 */
 	public Stock(String name, int quantity, int price) {
 
-		Stockname = name;
+		stockName = name;
 		this.quantity = quantity;
 		this.price = price;
 	}
 
-	public String getname() {
-		Stockname = Stockname.toString();
+	public String getName() {
+		stockName = stockName.toString();
 
-		return Stockname;
+		return stockName;
 	}
 
-	public int getprice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public int getquantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
@@ -76,9 +84,9 @@ class Stock {
  */
 class Portfolio {
 
-	int totalprice, quantity, price;
+	int totalPrice, quantity, price;
 
-	String stockname;
+	String stockName;
 
 	/**
 	 * Method accepting Stock as parameters
@@ -87,10 +95,10 @@ class Portfolio {
 	 * @return total price
 	 */
 	public int catchStock(Stock i) {
-		stockname = i.getname();
-		price = i.getprice();
-		quantity = i.getquantity();
+		stockName = i.getName();
+		price = i.getPrice();
+		quantity = i.getQuantity();
 
-		return totalprice = quantity * price;
+		return totalPrice = quantity * price;
 	}
 }
