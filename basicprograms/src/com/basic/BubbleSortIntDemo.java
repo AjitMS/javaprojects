@@ -17,18 +17,18 @@ public class BubbleSortIntDemo {
 	 */
 	public static void main(String[] args) {
 
-		int n, numbers[], i;
+		int capacity, numbers[], i;
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter no. of Integers");
-		n = scanner.nextInt();
-		numbers = new int[n];
-		System.out.println("Enter " + n + " Integers");
-		for (i = 0; i < n; i++)
+		capacity = scanner.nextInt();
+		numbers = new int[capacity];
+		System.out.println("Enter " + capacity + " Integers");
+		for (i = 0; i < capacity; i++)
 			numbers[i] = scanner.nextInt();
 		System.out.println("Given numbers are: ");
-		for (i = 0; i < n; i++)
+		for (i = 0; i < capacity; i++)
 			System.out.println(numbers[i]);
-		SortingUtilities.bubbleSortInt(numbers, n);
+		SortingUtilities.bubbleSortInt(numbers, capacity);
 
 		scanner.close();
 

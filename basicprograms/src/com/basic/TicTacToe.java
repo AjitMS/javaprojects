@@ -3,6 +3,7 @@ package com.basic;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Random;
+import java.util.Scanner;
 
 enum WhoseTurn {
 	PLAYER, COMPUTER;
@@ -35,8 +36,21 @@ public class TicTacToe {
 	 */
 	public static void main(String args[]) {
 
+		Scanner scanner  = new Scanner(System.in);
+		int decision;
+		boolean choice = true;
+		while(choice) {
 		TicTacToe ticTacToe = new TicTacToe(rows, columns, tmove);
 		ticTacToe.play();
+		System.out.println("1. Try Again");
+		System.out.println("2. Quit");
+		decision = scanner.nextInt();
+		if(decision == 1)
+			choice = true;
+		else choice = false;
+		
+		}
+		scanner.close();
 	}
 
 	public TicTacToe(int rows, int columns, int nMoves) {

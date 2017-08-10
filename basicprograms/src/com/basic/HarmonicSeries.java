@@ -14,7 +14,7 @@ public class HarmonicSeries {
 	 */
 	public static void main(String args[]) {
 		double initial;
-		double harmonicnumber;
+		double harmonicResult;
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("**Harmonic Series Program 5**");
@@ -25,8 +25,8 @@ public class HarmonicSeries {
 			System.out.println("Enter value greater than 0");
 			initial = scanner.nextInt();
 		}
-		harmonicnumber = harmonic(initial);
-		System.out.println("Harmonic value is " + harmonicnumber);
+		harmonicResult = harmonic(initial);
+		System.out.println("Harmonic value is " + harmonicResult);
 		scanner.close();
 	}
 

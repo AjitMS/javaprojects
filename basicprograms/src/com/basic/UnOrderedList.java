@@ -33,7 +33,7 @@ public class UnOrderedList {
 
 	/**
 	 * @param new_data
-	 * Implmentation of addLast to Linked List
+	 *            Implmentation of addLast to Linked List
 	 */
 	public void append(int new_data) {
 		if (head == null) {
@@ -53,7 +53,7 @@ public class UnOrderedList {
 
 	/**
 	 * @param new_data
-	 * Pushing data to the first
+	 *            Pushing data to the first
 	 */
 	public void push(int new_data) {
 		if (head == null)
@@ -64,10 +64,9 @@ public class UnOrderedList {
 	}
 
 	/**
-	* @param data
-	* search through entire list through traversing till end
-	 * @return false if not found
-	 * else return true
+	 * @param data
+	 *            search through entire list through traversing till end
+	 * @return false if not found else return true
 	 */
 	public boolean search(int data) {
 		Node sample = head;
@@ -82,8 +81,8 @@ public class UnOrderedList {
 
 	/**
 	 * @param del_data
-	 * removing a node from list.
-	 * can be from first, last, or between nodes.
+	 *            removing a node from list. can be from first, last, or between
+	 *            nodes.
 	 */
 	public void remove(int del_data) {
 
@@ -113,7 +112,7 @@ public class UnOrderedList {
 	/**
 	 * @param prev_Node
 	 * @param new_data
-	 * Method to add node between two nodes
+	 *            Method to add node between two nodes
 	 */
 	public void insertAfter(Node prev_Node, int new_data) {
 		if (head == null)
@@ -150,8 +149,8 @@ public class UnOrderedList {
 	/**
 	 * @param args
 	 * @throws Exception
-	 * driver method to implement UnOrdered list, such that, remove existing entry and add new entry
-	 * and reflect changes to file also
+	 *             driver method to implement UnOrdered list, such that, remove
+	 *             existing entry and add new entry and reflect changes to file also
 	 * 
 	 */
 	public static void main(String args[]) throws Exception {
@@ -171,6 +170,7 @@ public class UnOrderedList {
 		unOrderedList.show();
 		String choice = "y";
 		while (choice.equalsIgnoreCase("y")) {
+			System.out.println();
 			System.out.println("Enter any Integer");
 			token = scanner.nextInt();
 			if (unOrderedList.search(token) == true)
@@ -181,8 +181,18 @@ public class UnOrderedList {
 
 			fileScanner.close();
 			unOrderedList.show();
-			System.out.println("Continue Y or N?");
-			choice = scanner.next();
+			System.out.println();
+			System.out.println("1. Continue ");
+			System.out.println("2. Exit ");
+			int decision = scanner.nextInt();
+			switch (decision) {
+			case 1:
+				choice = "y";
+				break;
+			case 2:
+				choice = "n";
+				break;
+			}
 		}
 		scanner.close();
 	}

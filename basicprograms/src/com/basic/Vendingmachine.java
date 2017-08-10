@@ -15,10 +15,19 @@ public class Vendingmachine {
 	 */
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
+		boolean decision = true;
+		while(decision) {
 		System.out.println("Enter Amount to get price: ");
 		int amount = scanner.nextInt();
 		Change change = new Change();
 		change.getChange(amount);
+		System.out.println("1. Try Again ");
+		System.out.println("2. Exit ");
+		int choice = scanner.nextInt();
+		if(choice == 1)
+			decision = true;
+		else decision = false;
+		}
 		scanner.close();
 
 	}

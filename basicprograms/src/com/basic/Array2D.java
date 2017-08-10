@@ -11,34 +11,34 @@ public class Array2D {
 
 	/**
 	 * @param args
-	 * simple program to implement 2D Array.
+	 *            simple program to implement 2D Array.
 	 */
 	public static void main(String args[]) {
 
 		System.out.println("**2-D Array Program 9**");
 
 		Scanner scanner = new Scanner(System.in);
-		int rows, columns, i, j;
+		int rows, columns;
 		System.out.println("Enter no. of rows");
 		rows = scanner.nextInt();
 		System.out.println("Enter no. of columns");
 		columns = scanner.nextInt();
 		int array[][] = new int[rows][columns];
 		System.out.println("Enter values of array");
-		for (i = 0; i < rows; i++)
-			for (j = 0; j < columns; j++)
+		for (int i = 0; i < rows; i++)
+			for (int j = 0; j < columns; j++)
 				array[i][j] = scanner.nextInt();
 
-		PrintWriter printwriter = new PrintWriter(System.out);
+		PrintWriter printWriter = new PrintWriter(System.out);
 
-		for (i = 0; i < rows; i++) {
-			printwriter.println(" \n ");
-			for (j = 0; j < columns; j++)
-				printwriter.print(array[i][j] + "\t");
+		for (int i = 0; i < rows; i++) {
+			printWriter.println(" \n ");
+			for (int j = 0; j < columns; j++)
+				printWriter.print(array[i][j] + "\t");
 		}
 
-		printwriter.flush();
-		printwriter.close();
+		printWriter.flush();
+		printWriter.close();
 		scanner.close();
 	}
 }

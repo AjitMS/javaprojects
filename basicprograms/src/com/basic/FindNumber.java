@@ -1,86 +1,52 @@
 package com.basic;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-class FindNumber {
-	public static void main(String args[]) {
-		int array[], i, number, high, low;
-		Scanner t = new Scanner(System.in);
-		System.out.println("Enter a number exp to 2 ");
-		number = t.nextInt();
-		array = new int[number];
-		for (i = 0; i < number; i++)
-			array[i] = i;
-		low = 0;
-		high = array[array.length - 1];
-		Guess g = new Guess();
-		int exp = g.findPower(number);
-		g.guessing(high, low, array, exp);
-		t.close();
-
-	}
-}
+import com.basic.utilities.BasicUtilities;
 
 /**
  * @author Ajit Shikalgar
- * 
+ *
  */
-class Guess {
+class FindNumber {
 	/**
-	 * @param high
-	 * @param low
-	 * @param a
-	 *            A Method to guess the imagined number
+	 * @param args
+	 *            driver program to implement recursive findNumber()
 	 */
+	public static void main(String args[]) throws IOException {
+		int array[], i, number, high, low;
+		int choice = 1;
 
-	private int count = 0;
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		while (choice == 1) {
+			System.out.println("Enter a number exp to 2 ");
 
-	public void guessing(int high, int low, int a[], int exp) {
-		int n, middle;
-		count++;
+			number = Integer.parseInt(br.readLine());
+			System.out.println("OH so u slected " + number);
+			array = new int[number];
+			for (i = 0; i < number; i++)
+				array[i] = i;
+			low = 0;
+			high = array[array.length - 1];
+			BasicUtilities basic = new BasicUtilities();
+			int exp = basic.findPower(number);
+			basic.guessing(high, low, array, exp);
+			System.out.println("1. Try Again ");
+			System.out.println("2. Exit ");
+			int decison = Integer.parseInt(br.readLine());
+			switch (decison) {
+			case 1:
+				choice = 1;
+				break;
 
-		Scanner t = new Scanner(System.in);
-		middle = (high + low + 1) / 2;
-
-		if (low >= middle) {
-			System.out.println("You Cheated !");
-			t.close();
-			return;
-		}
-
-		if (count == exp) {
-			System.out.println("Guessed number is " + middle + " !");
-			t.close();
-			return;
-		}
-
-		else {
-			System.out.println("Is number in range of " + low + " to" + middle + " yes");
-			n = t.nextInt();
-			if (n == 1) {
-				high = middle;
-				guessing(high, low, a, exp);
-			} else {
-				low = middle;
-				guessing(high, low, a, exp);
+			case 2:
+				choice = 0;
+				break;
 			}
 		}
 
-		t.close();
 	}
-
-	/**
-	 * @param n
-	 * @return find the Power
-	 */
-
-	public int findPower(int n) {
-		int count = 0;
-		while (n != 0) {
-			count++;
-			n = n / 2;
-		}
-		return count;
-	}
-
 }

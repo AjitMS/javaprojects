@@ -52,7 +52,7 @@ public class OrderedList {
 			return;
 		} else {
 			Node n = head;
-			while (n.next != null) {
+			while (n != null) {
 				System.out.print(" " + n.data);
 				n = n.next;
 			}
@@ -136,7 +136,7 @@ public class OrderedList {
 			n = fileScanner.nextInt();
 			orderedList.addSort(n);
 		}
-		System.out.println("Original List in Text File is: ");
+		System.out.println("Original List in Text File is: out of: ");
 		orderedList.showList();
 		System.out.println("");
 		String choice = "y";
@@ -153,6 +153,21 @@ public class OrderedList {
 
 			orderedList.fileWriter();
 			orderedList.showList();
+			System.out.println();
+			System.out.println("1. Continue");
+
+			System.out.println("2. Exit ");
+
+			int decision = scanner.nextInt();
+			switch (decision) {
+			case 1:
+				choice = "y";
+				break;
+			case 2:
+				choice = "n";
+				break;
+
+			}
 
 		}
 		scanner.close();

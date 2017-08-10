@@ -132,7 +132,7 @@ class Cashcounter {
 
 			if (cashCounter.isEmpty())
 				System.out.println("Transaction is carried out succesfullly !");
-			System.out.println("Begin Again Y or N ?");
+			System.out.println("Any more Transactions Y or N ?");
 			choice = scanner.next();
 		}
 		scanner.close();
