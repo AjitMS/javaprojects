@@ -1,0 +1,14 @@
+{"inventory":
+[
+{
+"name":"rice","weight":"20","priceofkg":"40"
+}
+{
+"name":"wheat","weight":"17","priceofkg":"85"
+}
+{
+"name":"pulses","weight":"15","priceofkg":"100"
+}
+
+]
+}

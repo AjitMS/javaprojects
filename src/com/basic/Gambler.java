@@ -57,10 +57,9 @@ public class Gambler {
 			System.out.println("No. of wins: " + i + " from total of: " + n);
 			System.out.println("percent of wins: " + percentWin);
 			System.out.println("percent of lossess: " + percentLoss);
-			System.out.println("Play Again Y or N ?");
+			System.out.println("Try Again Y or N ?");
 
 			choice = scanner.next();
-			System.out.println(choice);
 		}
 		scanner.close();
 	}
