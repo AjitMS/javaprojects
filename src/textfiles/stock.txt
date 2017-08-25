@@ -1,4 +1,0 @@
-icici 20 60
-bajaj 12 96
-hp 18 50
-mdc 34 49
